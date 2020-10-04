@@ -11,12 +11,10 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Auth::routes();
+Route::get('/', 'PostsController@index');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/my-posts', 'PostsController@getPostsOfAuthUser')->name('myposts');
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/', 'PostsController@index')->name('home');
+});
+Route::resource('posts', 'PostsController')->except('show');

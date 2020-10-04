@@ -7,13 +7,15 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Post::class, function (Faker $faker) {
     $imgs = scandir(public_path().'/img');
-    unset($imgs[0]);unset($imgs[1]);
+    unset($imgs[0], $imgs[1]);
     shuffle($imgs);
-    $photos = array_slice($imgs, 2, rand(1, 50));
-
+    $images = array_slice($imgs, 2, rand(1, 25));
+    foreach ($images as &$image) {
+        $image = 'img/'.$image;
+    }
     return [
         'title' => $faker->sentence(5),
-        'content' => $faker->text(300),
-        'photo' => serialize($photos)
+        'text' => $faker->text(200),
+        'image' => serialize($images)
     ];
 });
