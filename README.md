@@ -14,4 +14,4 @@
  
  У всех пользователей один пароль см. database/factories/UserFactory.php.<br>
  
-![Alt text](/screenshot.jpg?raw=true "screenshot")
+![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot.png)
