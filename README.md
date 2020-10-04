@@ -8,6 +8,7 @@
 <li>composer install</li>
 <li>php artisan key:generate</li>
 <li>php artisan migrate --seed</li>
+<li>Проверьте права на папки</li>
  </ol>
  
  У всех пользователей один пароль см. database/factories/UserFactory.php.<br>
