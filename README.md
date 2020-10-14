@@ -10,10 +10,13 @@
 <li>composer install</li>
 <li>php artisan key:generate</li>
 <li>php artisan migrate --seed</li>
- </ol>
+</ol>
  
- У всех пользователей один пароль см. database/factories/UserFactory.php.<br>
+У всех пользователей [один пароль](https://github.com/steqtk/larablog/blob/master/database/factories/UserFactory.php).
  
+Main screen
 ![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot.png)
+Screen after login with icons for editing / deleting your posts
 ![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot1.png)
+Screen for editing your post.
 ![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot2.png)
