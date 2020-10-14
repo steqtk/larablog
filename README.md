@@ -14,9 +14,9 @@
  
 У всех пользователей [один пароль](https://github.com/steqtk/larablog/blob/master/database/factories/UserFactory.php).
  
-Main screen
+Главный экран
 ![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot.png)
-Screen after login with icons for editing / deleting your posts
+Экран после авторизации с иконками редактирования/удаления своих постов.
 ![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot1.png)
-Screen for editing your post.
+Экран редактирования своего поста.
 ![ScreenShot](https://raw.github.com/steqtk/larablog/master/screenshot2.png)
