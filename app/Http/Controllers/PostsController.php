@@ -47,10 +47,8 @@ class PostsController extends Controller
         if ($request->has('post_image')) {
             foreach ($request->post_image as $image) {
                 if ($image instanceof UploadedFile) {
-                    $extension = $image->getClientOriginalExtension(); // you can also use file name
-                    $filename = Auth::user()->name.'_'.Str::random(10).'.'.$extension;
-                    $filepath = $image->storeAs('', $filename);
-                    $post_image_to_db[] = 'img/'.$filepath;
+                    $filePath = $this->storeFile($image);
+                    $post_image_to_db[] = 'img/'.$filePath;
                 } else {
                     $post_image_to_db[] = $image;
                 }
@@ -85,10 +83,8 @@ class PostsController extends Controller
         if ($request->has('post_image')) {
             foreach ($request->post_image as $image) {
                 if ($image instanceof UploadedFile) {
-                    $extension = $image->getClientOriginalExtension(); // you can also use file name
-                    $filename = Auth::user()->name . '_' . Str::random(10) . '.' . $extension;
-                    $filepath = $image->storeAs('', $filename);
-                    $post_image_to_db[] = 'img/' . $filepath;
+                    $filePath = $this->storeFile($image);
+                    $post_image_to_db[] = 'img/' . $filePath;
                 }
             }
             Post::create([
@@ -100,5 +96,13 @@ class PostsController extends Controller
 
             return redirect(route('myposts'));
         }
+    }
+
+    private function storeFile($image)
+    {
+        $extension = $image->getClientOriginalExtension();
+        $filename = Auth::user()->name . '_' . md5(time()) . '.' . $extension;
+
+        return $image->storeAs('', $filename);
     }
 }
