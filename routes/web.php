@@ -18,3 +18,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 Route::resource('posts', 'PostsController')->except('show');
+Route::post('like', 'LikesController@setLikesByPostID')->name('set-like');

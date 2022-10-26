@@ -30,6 +30,26 @@
                                 @endforeach
                             @endif
                         </div>
+                        @auth
+                            @if ($post->user->id !== auth()->user()->id)
+                                <div class="d-inline">
+                                    <div class="badge float-right">
+                                        <a id="post-like" data-id="{{ $post->id }}" class="far fa-heart fa-2x mr-2" title="Set Like" onclick="setLike({{ $post->id }})">
+                                            <span id="like-counter">{{ $likeCounter[$post->id] }}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endauth
+                        @guest
+                            <div class="d-inline">
+                                <div class="badge float-right">
+                                    <a id="post-like" data-id="{{ $post->id }}" class="far fa-heart fa-2x mr-2" title="Set Like">
+                                        <span id="like-counter">{{ $likeCounter[$post->id] }}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        @endguest
                     </div>
                 @endforeach
                 @else

@@ -50,3 +50,9 @@
         text-shadow: 0 0 .1em green;
     }
 }
+#post-like {
+    color: red;
+}
+#post-like:hover {
+    cursor:pointer;
+}

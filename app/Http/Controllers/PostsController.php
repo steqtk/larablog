@@ -6,22 +6,25 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class PostsController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::with('user')->orderBy('id', 'desc')->paginate(5);
+        $posts = Post::with('user')->paginate(5);
+        $userLikes = (new LikesController())->getPostsIDbyUserID(Auth::id());
+        $likeCounter = [];
+
+        foreach ($posts as $post) {
+            $likeCounter[$post->id] = (new LikesController())->getLikesByPostID($post->id);
+        }
         if ($request->ajax())
         {
-            $view = view('post.data',compact('posts'))->render();
+            $view = view('post.data',compact('posts', 'likeCounter', 'userLikes'))->render();
             return response()->json(['html'=>$view]);
         }
-        return view('post.index', ['posts' => $posts]);
+        return view('post.index', ['posts' => $posts, 'likeCounter' => $likeCounter, 'userLikes' => $userLikes]);
     }
 
     public function getPostsOfAuthUser()

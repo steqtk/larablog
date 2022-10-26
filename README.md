@@ -2,6 +2,7 @@
 <ul>
 <li>Небольшой пример реализации ленты сообщений различных авторов с ajax-подгрузкой последующих сообщений при прокрутке.</li>
 <li>Возможность просмотра изображений в fancybox`e, редактирования своих сообщений, текста, картинок.</li>
+<li>Авторизованные пользователи могут ставить лайки чужим постам</li>
 </ul>
 
 <ol>
@@ -9,7 +10,7 @@
 <li>в .env задать подключение к БД</li>
 <li>composer install</li>
 <li>php artisan key:generate</li>
-<li>php artisan migrate --seed</li>
+<li>php artisan migrate:fresh --seed</li>
 </ol>
  
 У всех пользователей [один пароль](https://github.com/steqtk/larablog/blob/master/database/factories/UserFactory.php).
